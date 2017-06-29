@@ -1,0 +1,155 @@
+/* --------------------------------
+
+xheader
+
+-------------------------------- */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background: $header-bg;
+    text-align: center;
+    box-shadow: 0 2px 0 rgba(#000, .1);
+    z-index: $header-zindex;
+    @include MQ(L) {
+        height: 80px;
+    }
+}
+
+#logo {
+    padding-top: 5px;
+    /* delete this property if you don't want your logo to scale down on mobile devices */
+    @include transform(scale(.8));
+    @include MQ(L) {
+        padding-top: 20px;
+        position: absolute;
+        /* logo left margin on Dekstop */
+        left: 2.4em;
+        top: 0;
+        @include transform(scale(1));
+    }
+}
+
+#cd-hamburger-menu,
+#cd-cart-trigger {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    a {
+        width: 60px;
+        height: 100%;
+    }
+}
+
+#cd-hamburger-menu {
+    left: 0;
+    a {
+        background: darken($header-bg, 5%) url('/app/img/cd-hamburger-menu.svg') no-repeat center center;
+    }
+    @include MQ(L) {
+        display: none;
+    }
+}
+
+#cd-cart-trigger {
+    right: 0;
+    a {
+        background: darken($header-bg, 5%) url('/app/img/cd-cart.svg') no-repeat center center;
+    }
+    @include MQ(L) {
+        /* cart right margin on desktop */
+        right: 0;
+        a {
+            position: relative;
+            width: 100px;
+            border-left: none;
+            background-color: darken($header-bg, 5%);
+        }
+    }
+}
+
+#main-nav,
+#cd-cart {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 260px;
+    /* header height */
+    padding-top: 50px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 0 20px rgba(#000, .2);
+    z-index: $sidebar-zindex;
+    @include MQ(M) {
+        width: 350px;
+    }
+    @include MQ(L) {
+        width: 30%;
+        /* header height has changed */
+        padding-top: 80px;
+    }
+}
+
+#main-nav {
+    left: -100%;
+    background: #FFF;
+    @include transition(left .3s);
+    &.speed-in {
+        left: 0;
+    }
+    ul {
+        a {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 1em;
+            border-bottom: 1px solid $border;
+        }
+        .current {
+            box-shadow: inset 3px 0 $link;
+        }
+    }
+    @include MQ(L) {
+        /* reset main nav style */
+        position: absolute;
+        height: auto;
+        width: auto;
+        left: auto;
+        right: 8em;
+        padding-top: 0;
+        top: 0;
+        background: transparent;
+        box-shadow: none;
+        /* header height */
+        line-height: 80px;
+        z-index: $header-zindex;
+        li {
+            display: inline-block;
+            margin-left: 1em;
+        }
+        ul a {
+            display: inline-block;
+            height: auto;
+            line-height: 1;
+            padding: 1em 1.4em;
+            border-bottom: none;
+            color: rgba(#FFF, .8);
+            @include border-radius;
+            &.current {
+                box-shadow: none;
+                background: $link;
+                color: #FFF;
+            }
+             &:hover {
+                background: $link;
+                color: #FFF;
+            }
+        }
+    }
+    .no-js & {
+        position: fixed;
+    }
+}

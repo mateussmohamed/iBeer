@@ -1,0 +1,46 @@
+/* --------------------------------
+
+Gallery grid
+
+-------------------------------- */
+
+.cd-gallery {
+	width: 90%;
+	max-width: $L;
+	margin: 1.5em auto;
+
+	> li {
+		margin-bottom: 2em;
+	}
+
+	@include MQ(M) {
+		margin-top: 2em;
+		@include clearfix;
+
+		> li {
+			@include column(.48);
+			margin: 0 4% 6% 0;
+
+			&:nth-of-type(2n) {
+				margin-right: 0;
+			}
+		}
+	}
+
+	@include MQ(L) {
+		margin-top: 6em;
+
+		> li {
+			@include column(.3);
+			margin: 0 5% 5% 0;
+
+			&:nth-of-type(2n) {
+				margin-right: 5%;
+			}
+
+			&:nth-of-type(3n) {
+				margin-right: 0;
+			}
+		}
+	}
+}

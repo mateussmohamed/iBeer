@@ -1,0 +1,54 @@
+/* --------------------------------
+
+Primary style
+
+-------------------------------- */
+
+// z-index
+$header-zindex: 4;
+$sidebar-zindex: 3;
+$shadow-zindex: 2;
+$main-zindex: 1;
+*,
+*::after,
+*::before {
+	@include box-sizing(border-box);
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	font: {
+		size: 100%;
+		family: $primary-font; // variables inside partials > _variables.scss
+	}
+	color: $main-text;
+	background-color: $background;
+	&.overflow-hidden {
+		/* prevent 2 vertical scrollbars on ie and firefox when the cart is visible */
+		overflow: hidden;
+	}
+}
+
+a {
+	color: $link;
+	text-decoration: none;
+}
+
+img,
+svg {
+	max-width: 100%;
+}
+
+button {
+	@include appearance(none);
+	cursor: pointer;
+	border: none;
+	padding: 0;
+	&:focus {
+		outline: none;
+	}
+}
