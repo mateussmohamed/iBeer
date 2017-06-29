@@ -1,0 +1,8 @@
+<ul class="cd-gallery">
+  <li ng-repeat="beer in $ctrl.beers">
+    <beer
+      beer="beer"
+      on-add-to-cart="$ctrl.addToCart($event)"
+    ></beer>
+  </li>
+</ul>

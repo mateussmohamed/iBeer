@@ -1,0 +1,5 @@
+<span class="cd-qty">{{$ctrl.item.quantity}}x</span> {{$ctrl.item.name}}
+<div class="cd-price">{{($ctrl.item.abv * $ctrl.item.quantity) | currency }}</div>
+<a href="#0" class="cd-item-remove cd-img-replace" ng-click="$ctrl.removeItem($ctrl.item);">
+  Remove
+</a>

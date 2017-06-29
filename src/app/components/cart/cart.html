@@ -1,0 +1,25 @@
+<div id="cd-shadow-layer"></div>
+
+<div id="cd-cart">
+  <h2>Cart</h2>
+  <div ng-if="$ctrl.items.length" class="cd-cart-items">
+    <ul>
+      <li ng-repeat="item in $ctrl.items">
+        <cart-item item="item" on-remove-item="$ctrl.onRemove($event);"></cart-item>
+      </li>
+    </ul>
+
+    <div class="cd-cart-total">
+      <p>Total <span>{{ $ctrl.total | currency }}</span></p>
+    </div>
+
+    <a href="#0" class="checkout-btn">Checkout</a>
+
+  </div>
+  <div class="cd-cart-empty" ng-if="!$ctrl.items.length">
+    <p>There's no one here... :(</p>
+    <p class="cd-go-to-cart">
+      <a href="/">Go to catalog</a>
+    </p>
+  </div>
+</div>
