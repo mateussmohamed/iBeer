@@ -1,9 +1,13 @@
 import template from './form.html';
 import controller from './form.controller';
-import './form.scss';
 
 let formComponent = {
-  bindings: {},
+  bindings: {
+    user: '<',
+    button: '@',
+    message: '@',
+    onSubmit: '&'
+  },
   template,
   controller
 };

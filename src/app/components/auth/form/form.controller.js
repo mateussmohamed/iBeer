@@ -1,6 +1,19 @@
 class FormController {
   constructor() {
-    this.name = 'form';
+    this.user = {};
+  }
+
+  $onChanges(changes) {
+    if (changes.user) {
+      this.user = angular.copy(this.user);
+    }
+  }
+  submitForm() {
+    this.onSubmit({
+      $event: {
+        user: this.user
+      }
+    });
   }
 }
 

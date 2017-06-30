@@ -2,11 +2,11 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import formComponent from './form.component';
 
-let formModule = angular.module('form', [
+const formModule = angular.module('auth.form', [
   uiRouter
 ])
 
-.component('form', formComponent)
+.component('authForm', formComponent)
 
 .name;
 
