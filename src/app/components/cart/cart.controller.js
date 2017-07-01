@@ -1,7 +1,9 @@
 class CartController {
-  constructor(cartService) {
+  constructor($state, cartService, orderService) {
     'ngInject';
     this.cart = cartService;
+    this.order = orderService;
+    this.state = $state;
     this.items = [];
     this.total = 0;
   }
@@ -15,24 +17,37 @@ class CartController {
   }
 
   $doCheck() {
-    this.showTotalPrice();
+    // console.log(this.items);
+    if (this.items.length === 0) {
+      this.items = this.cart.getItems();
+      this.showTotalPrice();
+    }
   }
 
   onRemove({ item }) {
     this.cart.remove(item);
   }
 
-  showTotalPrice() {
-    this.total = this.cart.getTotalPrice();
+  clearCart() {
+    this.cart.clear();
+    this.items = [];
   }
 
-  checkout(order){
-    //TO;DO
-    // ADD ORDER SERVICE
-    //this.order.save(order)
-    // redirect to home page
-    //.then(() => ....)
-    //.catch(());
+  onCheckout() {
+    const order = this.cart.checkout();
+    this.order.save(order)
+      .then((res) => {
+        this.clearCart();
+        this.state.go('home');
+      })
+      .catch((ex) => {
+        this.state.go('auth.login');
+      });
+
+  }
+
+  showTotalPrice() {
+    this.total = this.cart.getTotalPrice();
   }
 }
 

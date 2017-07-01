@@ -1,4 +1,4 @@
-export default class CartService {
+class CartService {
   constructor() {
     this.items = [];
     this.total = 0;
@@ -31,10 +31,14 @@ export default class CartService {
     }
   }
 
+  clear() {
+    this.items = [];
+  }
+
   checkout() {
     if (this.items.length > 0) {
       return {
-        items: this.items,
+        items: this.items.map(item => item.id),
         totalPrice: this.calcTotalPrice(this.items)
       }
     }
@@ -60,3 +64,5 @@ export default class CartService {
     return items.reduce((prev, curr) => (prev + (curr.abv * curr.quantity)), 0);
   }
 }
+
+export default CartService;
