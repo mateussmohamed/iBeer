@@ -3,7 +3,6 @@ class CartItemController {
   }
 
   removeItem() {
-    console.log('call removeItem');
     this.onRemoveItem({
       $event: {
         item: this.item

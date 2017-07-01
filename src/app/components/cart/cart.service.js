@@ -31,6 +31,15 @@ export default class CartService {
     }
   }
 
+  checkout() {
+    if (this.items.length > 0) {
+      return {
+        items: this.items,
+        totalPrice: this.calcTotalPrice(this.items)
+      }
+    }
+  }
+
   findItem(item) {
     return this.items.filter(current => item.id === current.id)[0]
   }

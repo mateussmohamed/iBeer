@@ -25,6 +25,15 @@ class CartController {
   showTotalPrice() {
     this.total = this.cart.getTotalPrice();
   }
+
+  checkout(order){
+    //TO;DO
+    // ADD ORDER SERVICE
+    //this.order.save(order)
+    // redirect to home page
+    //.then(() => ....)
+    //.catch(());
+  }
 }
 
 export default CartController;
