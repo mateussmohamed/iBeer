@@ -8,28 +8,26 @@ import AuthService from './auth.service';
 
 const runAuth = ($transitions, $state, AuthService) => {
   'ngInject';
-  console.log('runAuth');
   $transitions.onStart({
     to: (state) => {
       console.log(state);
-      console.log('$transitions.onStart');
-      console.log(!!(state.data && state.data.requiredAuth));
       return !!(state.data && state.data.requiredAuth);
     }
   }, () => {
-    console.log('aaa')
-    AuthService.requireAuthentication().catch(() => {
-      console.log('catch');
-      $state.target('login');
-    })
-    return AuthService.requireAuthentication().catch(() => $state.target('login'))
+    console.log(AuthService.requireAuthentication())
+    // AuthService.requireAuthentication().catch(() => {
+    //   $state.target('login');
+    // })
+    return AuthService.requireAuthentication().catch(() => $state.target('auth.login'))
   });
 
   $transitions.onStart({
     to: 'auth.*'
   }, () => {
+    console.log(AuthService.isAuthenticated());
     if (AuthService.isAuthenticated()) {
-      return $state.target('home');
+      alert();
+      return $state.target('orders');
     }
   });
 }

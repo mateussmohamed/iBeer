@@ -6,16 +6,16 @@ class RegisterController {
     this.user = undefined;
     this.error = undefined;
   }
-  $onInit = function () {
+
+  $onInit() {
     this.error = null;
     this.user = {
       email: '',
       password: ''
     };
   };
-  createUse(event) {
-    return this.auth
-      .register(event.user)
+  createUser(event) {
+    return this.auth.register(event.user)
       .then(() => {
         this.state.go('home');
       }, (reason) => {

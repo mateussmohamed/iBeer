@@ -1,14 +1,15 @@
 <div class="auth">
-  <h1>Register</h1>
-  <auth-form
-    user="$ctrl.user"
-    message="{{ $ctrl.error }}"
-    button="Create user"
-    on-submit="$ctrl.createUser($event);">
-  </auth-form>
-</div>
-<div class="auth__info">
-  <a ui-sref="auth.login">
-    Already have an account? Login here.
-  </a>
+  <div id="cd-signup">
+    <div class="cd-user-modal-container">
+      <ul class="cd-switcher">
+        <li><a ui-sref="auth.login">Login</a></li>
+        <li><a class="selected">New account</a></li>
+      </ul>
+      <auth-form user="$ctrl.user" message="{{ $ctrl.error }}" button="Create user" on-submit="$ctrl.createUser($event);">
+      </auth-form>
+      <p class="cd-form-bottom-message">
+        <a ui-sref="auth.login">Already have an account? Login here.</a>
+      </p>
+    </div>
+  </div>
 </div>
