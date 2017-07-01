@@ -1,13 +1,23 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import orderComponent from './order.component';
+import orderService from './order.service';
 
-let orderModule = angular.module('order', [
+const orderModule = angular.module('order', [
   uiRouter
 ])
+  .config(($stateProvider, $urlRouterProvider) => {
+    'ngInject';
 
-.component('order', orderComponent)
+    $stateProvider
+      .state('order', {
+        url: '/orders',
+        component: 'order'
+      })
+  })
+  .service('orderService', orderService)
+  .component('order', orderComponent)
 
-.name;
+  .name;
 
 export default orderModule;
