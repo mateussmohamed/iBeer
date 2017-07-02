@@ -32,13 +32,13 @@ class NavbarController {
     });
   }
 
-  openCart() {
-    $on(this.$cart_trigger, 'click', (event) => {
-      event.preventDefault();
-      $rmc('speed-in', this.$menu_navigation);
-      this.togglePanelVisibility(this.$lateral_cart);
-    });
-  }
+  // openCart() {
+  //   $on(this.$cart_trigger, 'click', (event) => {
+  //     event.preventDefault();
+  //     $rmc('speed-in', this.$menu_navigation);
+  //     this.togglePanelVisibility(this.$lateral_cart);
+  //   });
+  // }
 
   removeShadowLayer() {
     if (this.$shadow_layer) {

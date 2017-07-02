@@ -1,14 +1,14 @@
 <div id="cd-hamburger-menu">
   <a class="cd-img-replace" ng-click="$ctrl.openMenu();">Menu</a>
 </div>
-<div id="cd-cart-trigger">
+<!--<div id="cd-cart-trigger">
   <a class="cd-img-replace" ng-click="$ctrl.openCart();">Cart</a>
-</div>
+</div>-->
 </header>
 
 <nav id="main-nav">
   <ul>
     <li><a ui-sref="home">Catalog</a></li>
     <li><a ui-sref="orders">My Orders</a></li>
-    <li><a ui-sref="auth.login">Logout</a></li>
+    <li><a ng-click="$ctrl.onLogout();">Logout</a></li>
   </ul>
