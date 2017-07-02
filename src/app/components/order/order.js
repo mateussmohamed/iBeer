@@ -21,7 +21,14 @@ const orderModule = angular.module('order', [
       .state('order', {
         parent: 'app',
         url: '/order/:id',
-        component: 'orderDetail'
+        component: 'orderDetail',
+        resolve: {
+          order: ($transition$, OrderService) => {
+            'ngInject';
+            const id = $transition$.params().id;
+            return OrderService.get(id);
+          }
+        }
       });
   })
   .service('OrderService', OrderService)
