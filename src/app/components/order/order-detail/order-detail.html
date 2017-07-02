@@ -1,103 +1,44 @@
 <div class="beer-order">
+  <div class="actions">
+    <button ng-click="$ctrl.goToOrders()"><- Orders</button>
+  </div>
   <div class="invoice-box">
     <table cellpadding="0" cellspacing="0">
       <tr class="top">
-        <td colspan="2">
+        <td>
+          <span>Order #: {{$ctrl.order.$id | uppercase}}</span><br>
+          <span>Date: {{$ctrl.order.requestDate | date }}</span>
+        </td>
+        <!--<td colspan="2">
           <table>
             <tr>
               <td class="title">
                 <img src="/app/img/cd-logo.svg" style="width:100%;">
               </td>
-
               <td>
-                Invoice #: 123<br> Created: January 1, 2015<br> Due: February 1, 2015
+                <span>Order #: {{$ctrl.order.$id | uppercase}}</span><br>
+                <span>Date: {{$ctrl.order.requestDate | date }}</span>
               </td>
             </tr>
           </table>
-        </td>
-      </tr>
-
-      <tr class="information">
-        <td colspan="2">
-          <table>
-            <tr>
-              <td>
-                Next Step Webs, Inc.<br> 12345 Sunny Road<br> Sunnyville, TX 12345
-              </td>
-
-              <td>
-                Acme Corp.<br> John Doe<br> john@example.com
-              </td>
-            </tr>
-          </table>
-        </td>
+        </td>-->
       </tr>
 
       <tr class="heading">
+        <td>Item</td>
+        <td colspan="2">Totals</td>
+      </tr>
+      <tr ng-repeat="item in $ctrl.order.items" class="item">
+        <td>{{item.name}}</td>
         <td>
-          Payment Method
-        </td>
-
-        <td>
-          Check #
+          <span>{{item.price | currency}} x {{item.quantity}} => </span>
+          <span>{{(item.price * item.quantity) | currency}}</span>
         </td>
       </tr>
-
-      <tr class="details">
-        <td>
-          Check
-        </td>
-
-        <td>
-          1000
-        </td>
-      </tr>
-
-      <tr class="heading">
-        <td>
-          Item
-        </td>
-
-        <td>
-          Price
-        </td>
-      </tr>
-
-      <tr class="item">
-        <td>
-          Website design
-        </td>
-
-        <td>
-          $300.00
-        </td>
-      </tr>
-
-      <tr class="item">
-        <td>
-          Hosting (3 months)
-        </td>
-
-        <td>
-          $75.00
-        </td>
-      </tr>
-
-      <tr class="item last">
-        <td>
-          Domain name (1 year)
-        </td>
-
-        <td>
-          $10.00
-        </td>
-      </tr>
-
       <tr class="total">
         <td></td>
-
         <td>
-          Total: $385.00
+          Total: {{$ctrl.order.totalPrice | currency}}
         </td>
       </tr>
     </table>
