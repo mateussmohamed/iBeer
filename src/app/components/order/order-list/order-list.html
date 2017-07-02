@@ -1,0 +1,24 @@
+<div class="beer-orders">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="order in $ctrl.orders">
+        <td>{{order.$id | uppercase }}</td>
+        <td>{{order.items.length}}</td>
+        <td>{{order.totalPrice}}</td>
+        <td>{{order.requestDate | date }}</td>
+        <td>
+          <button ng-click="$ctrl.goToDetailOrder(order)">View Order</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
