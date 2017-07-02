@@ -1,14 +1,20 @@
-// colors
+@mixin button {
+    background: $color-2;
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 1em;
+    @include appearance(none);
+    @include border-radius;
+    &:hover,
+    &:focus {
+        background: lighten($color-2, 5%);
+        outline: none;
+    }
+}
 
-
-
-// fonts
-
-$primary-font: 'PT Sans', sans-serif;
-
-// z-index
-
-$header-zindex: 4;
-$sidebar-zindex: 3;
-$shadow-zindex: 2;
-$main-zindex: 1;
+button,
+input[type="submit"] {
+    @include button;
+}

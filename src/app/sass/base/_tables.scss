@@ -1,0 +1,29 @@
+.table {
+    background-color: $color-4;
+    border: 1px solid $color-1;
+    width: 100%;
+    thead {
+        background-color: $background;
+    }
+    thead {
+        & th {
+            border-bottom: 1px solid $color-1;
+            font-weight: 600;
+            color: $color-1;
+        }
+    }
+    th,
+    td {
+        padding: 0.85rem;
+        vertical-align: middle;
+        border-top: 1px solid $color-1;
+        text-align: left;
+    }
+    td {
+        color: $color-1;
+        font-weight: 300;
+    }
+    tr {
+        border-color: $color-1;
+    }
+}

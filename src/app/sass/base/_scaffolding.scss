@@ -42,13 +42,3 @@ img,
 svg {
 	max-width: 100%;
 }
-
-button {
-	@include appearance(none);
-	cursor: pointer;
-	border: none;
-	padding: 0;
-	&:focus {
-		outline: none;
-	}
-}
