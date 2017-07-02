@@ -41,15 +41,19 @@ class NavbarController {
   }
 
   removeShadowLayer() {
-    $on(this.$shadow_layer, 'click', (event) => {
-      $rmc('is-visible', this.$shadow_layer);
-      $rmc('speed-in', this.$lateral_cart);
-      $rmc('speed-in', this.$menu_navigation);
-      $rmc('overflow-hidden', this.$body);
-    });
+    if (this.$shadow_layer) {
+      $on(this.$shadow_layer, 'click', (event) => {
+        $rmc('is-visible', this.$shadow_layer);
+        $rmc('speed-in', this.$lateral_cart);
+        $rmc('speed-in', this.$menu_navigation);
+        $rmc('overflow-hidden', this.$body);
+      });
+    }
   }
 
   togglePanelVisibility($panel) {
+    if (!$panel) { return }
+
     if ($cc('speed-in', $panel)) {
       $rmc('speed-in', $panel);
       $rmc('is-visible', this.$shadow_layer);

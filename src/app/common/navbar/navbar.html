@@ -1,16 +1,14 @@
-<header>
-  <div id="logo"><img src="/app/img/cd-logo.svg" alt="Homepage"></div>
-  <div id="cd-hamburger-menu">
-    <a class="cd-img-replace" ng-click="$ctrl.openMenu();">Menu</a>
-  </div>
-  <div id="cd-cart-trigger">
-    <a class="cd-img-replace" ng-click="$ctrl.openCart();">Cart</a>
-  </div>
+<div id="cd-hamburger-menu">
+  <a class="cd-img-replace" ng-click="$ctrl.openMenu();">Menu</a>
+</div>
+<div id="cd-cart-trigger">
+  <a class="cd-img-replace" ng-click="$ctrl.openCart();">Cart</a>
+</div>
 </header>
 
 <nav id="main-nav">
   <ul>
-    <li><a class="current" href="#0">Home</a></li>
-    <li><a href="#0">Login</a></li>
+    <li><a ui-sref="home">Catalog</a></li>
+    <li><a ui-sref="orders">My Orders</a></li>
+    <li><a ui-sref="auth.login">Logout</a></li>
   </ul>
-</nav>
