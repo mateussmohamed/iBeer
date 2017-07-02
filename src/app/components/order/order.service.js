@@ -1,10 +1,11 @@
 import firebase from 'firebase';
 
 class OrderService {
-  constructor($firebaseArray, AuthService) {
+  constructor($firebaseArray, $firebaseObject, AuthService) {
     'ngInject';
     // this.auth = AuthService;
     this.array = $firebaseArray;
+    this.object = $firebaseObject;
     this.ref = firebase.database().ref().child("orders");
     this.uid = AuthService.getUser().uid;
     // this.orders = $firebaseArray(this.ref);
@@ -12,6 +13,10 @@ class OrderService {
 
   all() {
     return this.array(this.ref.child(this.uid));
+  }
+
+  get(id){
+    return this.object(this.ref.child(this.uid).child(id));
   }
 
   save(data) {
