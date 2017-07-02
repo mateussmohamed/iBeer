@@ -1,16 +1,16 @@
-import OrderModule from './order';
-import OrderController from './order.controller';
-import OrderComponent from './order.component';
-import OrderTemplate from './order.html';
+import OrderDetailModule from './order';
+import OrderDetailController from './order-detail.controller';
+import OrderDetailComponent from './order-detail.component';
+import OrderDetailTemplate from './order-detail.html';
 
-describe('Order', () => {
+describe('OrderDetail', () => {
   let $rootScope, makeController;
 
-  beforeEach(window.module(OrderModule));
+  beforeEach(window.module(OrderDetailModule));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      return new OrderController();
+      return new OrderDetailController();
     };
   }));
 
@@ -30,20 +30,20 @@ describe('Order', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has name in template [REMOVE]', () => {
-      expect(OrderTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+      expect(OrderDetailTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
     // component/directive specs
-    let component = OrderComponent;
+    let component = OrderDetailComponent;
 
     it('includes the intended template', () => {
-      expect(component.template).to.equal(OrderTemplate);
+      expect(component.template).to.equal(OrderDetailTemplate);
     });
 
     it('invokes the right controller', () => {
-      expect(component.controller).to.equal(OrderController);
+      expect(component.controller).to.equal(OrderDetailController);
     });
   });
 });

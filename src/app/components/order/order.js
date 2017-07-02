@@ -1,7 +1,8 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import orderComponent from './order.component';
-import orderService from './order.service';
+import orderDetailComponent from './order-detail/order-detail.component';
+import ordesListComponent from './order-list/order-list.component';
+import OrderService from './order.service';
 
 const orderModule = angular.module('order', [
   uiRouter
@@ -13,11 +14,19 @@ const orderModule = angular.module('order', [
       .state('orders', {
         parent: 'app',
         url: '/orders',
-        component: 'order'
-      })
+        component: 'orderList'
+      });
+
+    $stateProvider
+      .state('order', {
+        parent: 'app',
+        url: '/order/:id',
+        component: 'orderDetail'
+      });
   })
-  .service('orderService', orderService)
-  .component('order', orderComponent)
+  .service('OrderService', OrderService)
+  .component('orderDetail', orderDetailComponent)
+  .component('orderList', ordesListComponent)
 
   .name;
 

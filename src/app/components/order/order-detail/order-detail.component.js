@@ -1,5 +1,5 @@
-import template from './order.html';
-import controller from './order.controller';
+import template from './order-detail.html';
+import controller from './order-detail.controller';
 
 let orderComponent = {
   bindings: {},

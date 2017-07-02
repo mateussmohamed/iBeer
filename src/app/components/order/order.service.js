@@ -1,25 +1,22 @@
 import firebase from 'firebase';
 
 class OrderService {
-  constructor($firebaseArray, $state, AuthService) {
+  constructor($firebaseArray, AuthService) {
     'ngInject';
+    // this.auth = AuthService;
+    this.array = $firebaseArray;
     this.ref = firebase.database().ref().child("orders");
-    this.orders = $firebaseArray(this.ref);
-    this.auth = AuthService;
-    this.state = $state;
+    this.uid = AuthService.getUser().uid;
+    // this.orders = $firebaseArray(this.ref);
   }
 
   all() {
-    return this.orders;
+    return this.array(this.ref.child(this.uid));
   }
 
-  save(order) {
-    if (this.auth.isAuthenticated()) {
-      const uid = this.auth.getUser().uid;
-      return this.orders.$add({ uid, ...order });
-    } else {
-      return Promise.reject(new Error('not auth'));
-    }
+  save(data) {
+    const order = { uid: this.uid, requestDate: Date.now(), ...data };
+    return this.array(this.ref.child(this.uid)).$add(order);
   }
 }
 
