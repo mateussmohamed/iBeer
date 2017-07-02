@@ -1,7 +1,4 @@
 .invoice-box {
-  width: 90%;
-  max-width: $L;
-  margin: 1.5em auto;
   background: $color-4;
   padding: 30px;
   border: 1px solid #eee;
@@ -15,8 +12,8 @@
     line-height: inherit;
     text-align: left;
     & td {
-      padding: 5px;
-      vertical-align: top;
+      padding: 0.7em;
+      vertical-align: middle;
     }
     & tr td:nth-child(2) {
       text-align: right;
@@ -32,18 +29,10 @@
           }
         }
       }
-      &.information {
-        & table>td {
-          padding-bottom: 40px;
-        }
-      }
       &.heading td {
-        background: #eee;
+        background: $background;
         border-bottom: 1px solid #ddd;
         font-weight: bold;
-      }
-      &.details td {
-        padding-bottom: 20px;
       }
       &.total {
         & td:nth-child(2) {
@@ -52,7 +41,7 @@
         }
       }
       &.item td {
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid $background;
       }
     }
   }

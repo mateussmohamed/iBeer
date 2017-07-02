@@ -3,6 +3,13 @@
 // Copyright 2011-2017 thoughtbot, inc.
 // MIT License
 
+$output-bourbon-deprecation-warnings: true;
+$prefix-for-webkit:    true;
+$prefix-for-mozilla:   true;
+$prefix-for-microsoft: true;
+$prefix-for-opera:     true;
+$prefix-for-spec:      true;
+
 @import "settings/deprecation-warnings";
 @import "settings/prefixer";
 @import "settings/px-to-em";
@@ -22,7 +29,7 @@
 @import "functions/shade";
 @import "functions/strip-units";
 @import "functions/tint";
-@import "functions/transition-property-name";
+// @import "functions/transition-property-name";
 @import "functions/unpack";
 @import "functions/modular-scale";
 
