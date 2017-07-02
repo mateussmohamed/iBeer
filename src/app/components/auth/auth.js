@@ -1,48 +1,66 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-import formComponent from './form/form';
-import loginComponent from './login/login';
-import registerComponent from './register/register';
+import formComponent from './form/form.component';
+import loginComponent from './login/login.component';
+import registerComponent from './register/register.component';
 import AuthService from './auth.service';
 
 const runAuth = ($transitions, $state, AuthService) => {
   'ngInject';
+
   $transitions.onStart({
     to: (state) => {
-      console.log(state);
       return !!(state.data && state.data.requiredAuth);
     }
   }, () => {
-    console.log(AuthService.requireAuthentication())
-    // AuthService.requireAuthentication().catch(() => {
-    //   $state.target('login');
-    // })
     return AuthService.requireAuthentication().catch(() => $state.target('auth.login'))
   });
 
   $transitions.onStart({
     to: 'auth.*'
   }, () => {
-    console.log(AuthService.isAuthenticated());
     if (AuthService.isAuthenticated()) {
-      alert();
-      return $state.target('orders');
+      return $state.target('home');
     }
   });
 }
 
+const configAuth = (($stateProvider, $urlRouterProvider) => {
+  'ngInject';
+
+  $stateProvider
+    .state('auth', {
+      redirectTo: 'auth.login',
+      url: '/auth',
+      template: '<div ui-view></div>'
+    })
+    .state('auth.login', {
+      url: '/login',
+      component: 'login'
+    });
+
+  $stateProvider
+    .state('auth.register', {
+      url: '/register',
+      component: 'register'
+    });
+
+  $urlRouterProvider.otherwise('/auth/login');
+
+});
+
+
 const authModule = angular.module('auth', [
   uiRouter,
-  formComponent,
-  loginComponent,
-  registerComponent
 ])
+  .config(configAuth)
   .run(runAuth)
-  // .component('form', formComponent)
-  // .component('login', loginComponent)
-  // .component('register', registerComponent)
+  .component('authForm', formComponent)
+  .component('login', loginComponent)
+  .component('register', registerComponent)
   .service('AuthService', AuthService)
+
   .name;
 
 export default authModule;

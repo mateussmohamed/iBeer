@@ -10,7 +10,8 @@ const orderModule = angular.module('order', [
     'ngInject';
 
     $stateProvider
-      .state('order', {
+      .state('orders', {
+        parent: 'app',
         url: '/orders',
         component: 'order'
       })
