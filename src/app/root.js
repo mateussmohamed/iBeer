@@ -2,10 +2,11 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import firebase from 'firebase';
 import angularfire from 'angularfire';
+import commom from './common/common.module';
+import components from './components/components.module';
+import rootComponent from './root.component';
 
-import Common from './common/common';
-import Components from './components/components';
-import AppComponent from './app.component';
+import './root.scss';
 
 const config = {
   apiKey: "AIzaSyAovd-Rj-mnkchaFqq3LdgtP0mwGMaiKIE",
@@ -18,23 +19,18 @@ const config = {
 
 firebase.initializeApp(config);
 
-angular.module('app', [
+angular.module('root', [
   uiRouter,
   angularfire,
-  Common,
-  Components
+  commom,
+  components
 ])
+  .component('root', rootComponent)
   .config(($locationProvider, $firebaseRefProvider) => {
-    "ngInject";
+    'ngInject';
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
-
-    //   const configAuth = () => {
-    // 'ngInject';
-
-    // Initialize Firebase
-
 
     $firebaseRefProvider
       .registerUrl({
@@ -42,8 +38,4 @@ angular.module('app', [
         orders: `${config.databaseURL}/orders`
       });
 
-
-    // }
-  })
-
-  .component('app', AppComponent);
+  });
