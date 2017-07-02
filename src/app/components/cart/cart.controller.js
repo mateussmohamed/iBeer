@@ -1,8 +1,8 @@
 class CartController {
-  constructor($state, cartService, orderService) {
+  constructor($state, cartService, OrderService) {
     'ngInject';
     this.cart = cartService;
-    this.order = orderService;
+    this.order = OrderService;
     this.state = $state;
     this.items = [];
     this.total = 0;
@@ -43,7 +43,6 @@ class CartController {
       .catch((ex) => {
         this.state.go('auth.login');
       });
-
   }
 
   showTotalPrice() {

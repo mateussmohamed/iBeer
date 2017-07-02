@@ -3,12 +3,12 @@ class AppController {
     'ngInject';
     this.auth = AuthService;
     this.user = this.auth.getUser();
-    this.state = $state;
+    this.router = $state;
   }
 
   logout() {
     this.auth.logout().then(() => {
-      this.state.go('auth.login');
+      this.router.go('auth.login');
     });
   };
 

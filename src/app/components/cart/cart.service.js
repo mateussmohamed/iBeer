@@ -37,10 +37,11 @@ class CartService {
 
   checkout() {
     if (this.items.length > 0) {
-      return {
-        items: this.items.map(item => item.id),
-        totalPrice: this.calcTotalPrice(this.items)
-      }
+      const items = this.items.map(item => {
+        return { id: item.id, name: item.name, price: item.abv, quantity: item.quantity };
+      });
+      const totalPrice = this.calcTotalPrice(this.items);
+      return { items, totalPrice };
     }
   }
 

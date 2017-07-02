@@ -9,7 +9,7 @@ export default class CatalogService {
       return Promise.resolve(this.beers);
     }
 
-    return this.$http.get('https://api.punkapi.com/v2/beers')
+    return this.$http.get('https://api.punkapi.com/v2/beers', { cache: true })
       .then(response => this.beers = response.data);
   }
 }
