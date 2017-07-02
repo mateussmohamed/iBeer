@@ -1,6 +1,11 @@
 class OrderDetailController {
-  constructor() {
-    this.name = 'order';
+  constructor($state) {
+    'ngInject';
+    this.router = $state;
+  }
+
+  goToOrders(){
+    this.router.go('orders');
   }
 }
 
