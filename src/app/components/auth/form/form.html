@@ -1,22 +1,22 @@
-<form class="cd-form" name="authForm" novalidate ng-submit="$ctrl.submitForm();">
+<form class="form" name="authForm" novalidate ng-submit="$ctrl.submitForm();">
   <p class="fieldset">
-    <label class="image-replace cd-email" for="signin-email">E-mail</label>
+    <label class="image-replace email" for="signin-email">E-mail</label>
     <input class="full-width has-padding has-border" type="email" name="email" placeholder="E-mail" required="required" placeholder="Enter your email"
       ng-model="$ctrl.user.email">
-    <span class="cd-error-message">Error message here!</span>
+    <span class="error-message">Error message here!</span>
   </p>
 
   <p class="fieldset">
-    <label class="image-replace cd-password" for="signin-password">Password</label>
+    <label class="image-replace password" for="signin-password">Password</label>
     <input class="full-width has-padding has-border" type="password" name="password" required="required" placeholder="Enter your password"
       ng-model="$ctrl.user.password" placeholder="Password">
-    <span class="cd-error-message">Error message here!</span>
+    <span class="error-message">Error message here!</span>
   </p>
 
   <p class="fieldset">
     <input class="full-width" type="submit" value="{{ $ctrl.button }}" ng-disabled="authForm.$invalid">
   </p>
-  <div ng-if="$ctrl.message" class="cd-form-message">
+  <div ng-if="$ctrl.message" class="form-message">
     {{ $ctrl.message }}
   </div>
 </form>

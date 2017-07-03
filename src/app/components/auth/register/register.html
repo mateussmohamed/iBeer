@@ -1,13 +1,13 @@
 <div class="auth">
-  <div id="cd-signup">
-    <div class="cd-user-modal-container">
-      <ul class="cd-switcher">
+  <div id="signup">
+    <div class="user-modal-container">
+      <ul class="switcher">
         <li><a ui-sref="auth.login">Login</a></li>
         <li><a class="selected">New account</a></li>
       </ul>
       <auth-form user="$ctrl.user" message="{{ $ctrl.error }}" button="Create user" on-submit="$ctrl.createUser($event);">
       </auth-form>
-      <p class="cd-form-bottom-message">
+      <p class="form-bottom-message">
         <a ui-sref="auth.login">Already have an account? Login here.</a>
       </p>
     </div>

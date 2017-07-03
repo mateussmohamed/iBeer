@@ -1,14 +1,14 @@
-<div id="cd-hamburger-menu">
-  <a class="cd-img-replace" ng-click="$ctrl.openMenu();">Menu</a>
+<div id="hamburger-menu">
+  <a class="img-replace" ng-click="$ctrl.toggleNav();" ng-class="{'is-open': $ctrl.toggle === true }">Menu</a>
 </div>
-<!--<div id="cd-cart-trigger">
-  <a class="cd-img-replace" ng-click="$ctrl.openCart();">Cart</a>
-</div>-->
 </header>
 
-<nav id="main-nav">
+<nav id="main-nav" ng-class="{'is-open': $ctrl.toggle === true }">
   <ul>
-    <li><a ui-sref="home">Catalog</a></li>
-    <li><a ui-sref="orders">My Orders</a></li>
-    <li><a ng-click="$ctrl.onLogout();">Logout</a></li>
+    <li><a href="#" ng-click="$ctrl.goTo($event, 'home');">Catalog</a></li>
+    <li><a href="#" ng-click="$ctrl.goTo($event, 'orders');">My Orders</a></li>
+    <li><a href="#" ng-click="$ctrl.onLogout();">Logout</a></li>
   </ul>
+</nav>
+
+<div id="shadow-layer"></div>

@@ -1,13 +1,13 @@
-<div class="cd-single-item">
-  <div class="cd-thumb">
+<div class="single-item">
+  <div class="thumb">
     <img src="{{$ctrl.beer.image_url}}" alt="{{$ctrl.name}}" />
   </div>
-  <div class="cd-customization">
+  <div class="customization">
     <beer-detail beer="$ctrl.beer" on-show-detail="$ctrl.toggleDetail($event)"></beer-detail>
     <button class="add-to-cart" ng-click="$ctrl.addToCart($ctrl.beer);">Add to Cart</button>
   </div>
 </div>
-<div class="cd-item-info">
+<div class="item-info">
   <b>{{ $ctrl.beer.name }}</b>
   <span></span>
   <em>${{ $ctrl.beer.abv }}</em>

@@ -1,8 +1,8 @@
 <div class="beer-orders">
-  <table class="table">
+  <table class="table responsive-table">
     <thead>
       <tr>
-        <th>#</th>
+        <th>Code</th>
         <th>Quantity</th>
         <th>Total</th>
         <th>Date</th>
@@ -11,11 +11,11 @@
     </thead>
     <tbody>
       <tr ng-repeat="order in $ctrl.orders">
-        <td>{{order.$id | uppercase }}</td>
-        <td>{{order.items.length}}</td>
-        <td>{{order.totalPrice | currency}}</td>
-        <td>{{order.requestDate | date:'medium' }}</td>
-        <td>
+        <td data-th="Code">{{order.$id | uppercase }}</td>
+        <td data-th="Quantity">{{order.items.length}}</td>
+        <td data-th="Total">{{order.totalPrice | currency}}</td>
+        <td data-th="Date">{{order.requestDate | date:'medium' }}</td>
+        <td data-th="Action">
           <button ng-click="$ctrl.goToDetailOrder(order)">View Order</button>
         </td>
       </tr>

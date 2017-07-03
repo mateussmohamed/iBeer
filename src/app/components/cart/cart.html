@@ -1,17 +1,17 @@
-<div class="cd-cart-container" ng-class="{'cart-open': $ctrl.toggleCart === true}">
-  <a ng-click="$ctrl.onToggleCart();" class="cd-cart-trigger">
+<div class="cart-container" ng-class="{'cart-open': $ctrl.toggleCart === true}">
+  <a ng-click="$ctrl.onToggleCart();" class="cart-trigger">
 		Cart
 		<span class="count">
 		{{$ctrl.items.length}}
 		</span>
 	</a>
-  <div class="cd-cart">
+  <div class="cart">
     <div class="wrapper">
       <header>
         <h2>Cart</h2>
       </header>
       <div class="body">
-        <p ng-if="$ctrl.items.length === 0">There's no one here... :(</p>
+        <p ng-if="$ctrl.items.length === 0">There's no one nothing here... 😕</p>
         <ul>
           <li class="product" ng-repeat="item in $ctrl.items">
             <cart-item
