@@ -1,21 +1,25 @@
 'use strict';
 
-import gulp     from 'gulp';
-import webpack  from 'webpack';
-import path     from 'path';
-import sync     from 'run-sequence';
-import rename   from 'gulp-rename';
+import gulp from 'gulp';
+import webpack from 'webpack';
+import path from 'path';
+import sync from 'run-sequence';
+import rename from 'gulp-rename';
 import template from 'gulp-template';
-import fs       from 'fs';
-import yargs    from 'yargs';
-import lodash   from 'lodash';
-import gutil    from 'gulp-util';
-import serve    from 'browser-sync';
-import del      from 'del';
+import fs from 'fs';
+import yargs from 'yargs';
+import lodash from 'lodash';
+import gutil from 'gulp-util';
+import serve from 'browser-sync';
+import del from 'del';
+import child from 'child_process';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import colorsSupported      from 'supports-color';
-import historyApiFallback   from 'connect-history-api-fallback';
+import colorsSupported from 'supports-color';
+import historyApiFallback from 'connect-history-api-fallback';
+
+const exec = child.exec;
+const argv = yargs.argv;
 
 let root = 'src';
 
@@ -52,7 +56,7 @@ gulp.task('webpack', ['clean'], (cb) => {
   config.entry.app = paths.entry;
 
   webpack(config, (err, stats) => {
-    if(err)  {
+    if (err) {
       throw new gutil.PluginError("webpack", err);
     }
 
@@ -71,7 +75,7 @@ gulp.task('serve', () => {
   config.entry.app = [
     // this modules required to make HRM working
     // it responsible for all this webpack magic
-    // 'webpack-hot-middleware/src?reload=true',
+    // 'webpack-hot-middleware/src/root.js?reload=true',
     // application entry point
   ].concat(paths.entry);
 
@@ -80,7 +84,7 @@ gulp.task('serve', () => {
   serve({
     port: process.env.PORT || 3000,
     open: false,
-    server: {baseDir: root},
+    server: { baseDir: root },
     middleware: [
       historyApiFallback(),
       webpackDevMiddleware(compiler, {
@@ -123,5 +127,15 @@ gulp.task('clean', (cb) => {
     cb();
   })
 });
+
+gulp.task('firebase', ['webpack'], cb => {
+  return exec('firebase deploy', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+});
+
+gulp.task('production', ['firebase']);
 
 gulp.task('default', ['watch']);

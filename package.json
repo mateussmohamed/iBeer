@@ -10,7 +10,8 @@
     "start": "gulp serve",
     "test": "karma start",
     "watch": "gulp serve",
-    "webpack": "gulp webpack"
+    "webpack": "gulp webpack",
+    "deploy": "gulp production"
   },
   "keywords": [
     "angular",
@@ -43,6 +44,7 @@
     "browser-sync": "^2.11.1",
     "chai": "^4.0.2",
     "connect-history-api-fallback": "^1.1.0",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "del": "^3.0.0",
     "fs-walk": "0.0.1",

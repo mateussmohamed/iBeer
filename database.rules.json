@@ -1,0 +1,11 @@
+{
+  "rules": {
+    ".read": true,
+    "orders": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
