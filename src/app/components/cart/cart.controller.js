@@ -1,26 +1,27 @@
+import { $adc, $rmc, $qs } from '../../utils/helpers';
 class CartController {
-  constructor($state, cartService, OrderService) {
+  constructor($state, CartService, OrderService) {
     'ngInject';
-    this.cart = cartService;
+    this.cart = CartService;
     this.order = OrderService;
-    this.state = $state;
+    this.router = $state;
     this.items = [];
     this.total = 0;
-  }
-
-  $onInit() {
-    this.items = this.cart.getItems();
-  }
-
-  $onChanges(changes) {
-    // console.log(changes);
+    this.toggleCart = false;
+    this.$body = $qs('body');
   }
 
   $doCheck() {
-    // console.log(this.items);
-    if (this.items.length === 0) {
-      this.items = this.cart.getItems();
-      this.showTotalPrice();
+    this.items = this.cart.getItems();
+    this.showTotalPrice();
+  }
+
+  onToggleCart() {
+    this.toggleCart = !this.toggleCart;
+    if (this.toggleCart) {
+      $adc('overflow-hidden', this.$body);
+    } else {
+      $rmc('overflow-hidden', this.$body);
     }
   }
 
@@ -28,9 +29,13 @@ class CartController {
     this.cart.remove(item);
   }
 
+  onUpdateQtyItem({ item, quantity }) {
+    // console.log(data);
+    this.cart.updateQtyItem(item, quantity);
+  }
+
   clearCart() {
     this.cart.clear();
-    this.items = [];
   }
 
   onCheckout() {
@@ -38,11 +43,11 @@ class CartController {
     this.order.save(order)
       .then((res) => {
         this.clearCart();
-        this.state.go('home');
+        this.toggleCart = false;
+        $rmc('overflow-hidden', this.$body);
+        this.router.go('order', { id: res.key});
       })
-      .catch((ex) => {
-        this.state.go('auth.login');
-      });
+
   }
 
   showTotalPrice() {

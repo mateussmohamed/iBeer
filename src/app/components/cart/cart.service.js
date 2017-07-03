@@ -5,41 +5,36 @@ class CartService {
   }
 
   add(item) {
-    const _item = this.findItem(item);
-    if (_item) {
-      _item.quantity += 1;
-      const index = this.items.indexOf(item);
-      this.items[index] = _item;
-
-    } else {
-      // new item
+    const existOnCart = this.findItem(item);
+    if (existOnCart === undefined) {
       item['quantity'] = 1;
       this.items.push(item);
     }
   }
 
   remove(item) {
-    const _item = this.findItem(item);
-    if (_item) {
-      const index = this.items.indexOf(_item);
-      if (_item.quantity > 1) {
-        _item['quantity']--;
-        this.items[index] = _item;
-      } else {
-        this.items.splice(index, 1);
-      }
+    const existOnCart = this.findItem(item);
+    if (existOnCart !== undefined) {
+      const index = this.items.indexOf(existOnCart);
+      this.items.splice(index, 1);
     }
+  }
+
+  updateQtyItem(item, quantity) {
+    const _item = this.findItem(item);
+    const index = this.items.indexOf(_item);
+    _item.quantity = quantity;
+    this.items[index] = _item;
   }
 
   clear() {
     this.items = [];
+    this.total = 0;
   }
 
   checkout() {
     if (this.items.length > 0) {
-      const items = this.items.map(item => {
-        return { id: item.id, name: item.name, price: item.abv, quantity: item.quantity };
-      });
+      const items = this.items.map(item => this.itemForCheckout(item));
       const totalPrice = this.calcTotalPrice(this.items);
       return { items, totalPrice };
     }
@@ -63,6 +58,17 @@ class CartService {
 
   calcTotalPrice(items) {
     return items.reduce((prev, curr) => (prev + (curr.abv * curr.quantity)), 0);
+  }
+
+  itemForCheckout(item) {
+    return {
+      id: item.id,
+      name: item.name,
+      price: item.abv,
+      quantity:
+      item.quantity,
+      image_url: item.image_url
+    };
   }
 }
 

@@ -1,23 +1,32 @@
-<div id="cd-cart">
-  <h2>Cart</h2>
-  <div ng-if="$ctrl.items.length" class="cd-cart-items">
-    <ul>
-      <li ng-repeat="item in $ctrl.items">
-        <cart-item item="item" on-remove-item="$ctrl.onRemove($event);"></cart-item>
-      </li>
-    </ul>
-
-    <div class="cd-cart-total">
-      <p>Total <span>{{ $ctrl.total | currency }}</span></p>
+<div class="cd-cart-container" ng-class="{'cart-open': $ctrl.toggleCart === true}">
+  <a ng-click="$ctrl.onToggleCart();" class="cd-cart-trigger">
+		Cart
+		<span class="count">
+		{{$ctrl.items.length}}
+		</span>
+	</a>
+  <div class="cd-cart">
+    <div class="wrapper">
+      <header>
+        <h2>Cart</h2>
+      </header>
+      <div class="body">
+        <p ng-if="$ctrl.items.length === 0">There's no one here... :(</p>
+        <ul>
+          <li class="product" ng-repeat="item in $ctrl.items">
+            <cart-item
+              item="item"
+              on-remove-item="$ctrl.onRemove($event);"
+              on-update-qty-item="$ctrl.onUpdateQtyItem($event);" />
+          </li>
+        </ul>
+      </div>
+      <footer>
+        <a class="checkout btn" href="#0" ng-click="$ctrl.onCheckout();">
+          <em ng-if="$ctrl.items.length > 0">Checkout - <span>{{ $ctrl.total | currency }}</span></em>
+          <em ng-if="$ctrl.items.length === 0">Go to catalog</span></em>
+        </a>
+      </footer>
     </div>
-
-    <a href="#0" ng-click="$ctrl.onCheckout();" class="checkout-btn">Checkout</a>
-
-  </div>
-  <div class="cd-cart-empty" ng-if="!$ctrl.items.length">
-    <p>There's no one here... :(</p>
-    <p class="cd-go-to-cart">
-      <a ui-sref="home">Go to catalog</a>
-    </p>
   </div>
 </div>
