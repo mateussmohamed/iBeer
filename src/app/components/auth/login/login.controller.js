@@ -2,7 +2,7 @@ class LoginController {
   constructor(AuthService, $state) {
     'ngInject';
     this.auth = AuthService;
-    this.state = $state;
+    this.router = $state;
     this.user = undefined;
     this.error = undefined;
   }
@@ -18,9 +18,8 @@ class LoginController {
     return this.auth
       .login(event.user)
       .then(() => {
-        this.state.go('home');
+        this.router.go('home');
       }, (reason) => {
-        console.log(reason);
         this.error = reason.message;
       });
   };

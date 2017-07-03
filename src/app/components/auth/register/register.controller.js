@@ -2,7 +2,7 @@ class RegisterController {
   constructor(AuthService, $state) {
     'ngInject';
     this.auth = AuthService;
-    this.state = $state;
+    this.router = $state;
     this.user = undefined;
     this.error = undefined;
   }
@@ -17,7 +17,7 @@ class RegisterController {
   createUser(event) {
     return this.auth.register(event.user)
       .then(() => {
-        this.state.go('home');
+        this.router.go('home');
       }, (reason) => {
         this.error = reason.message;
       });

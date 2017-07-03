@@ -1,8 +1,8 @@
 class BeersController {
-  constructor(beerService, cartService) {
+  constructor(beerService, CartService) {
     'ngInject';
     this.service = beerService;
-    this.cartService = cartService
+    this.CartService = CartService
     this.beers = [];
   }
 
@@ -15,7 +15,7 @@ class BeersController {
   }
 
   addToCart({ beer }) {
-    this.cartService.add(beer)
+    this.CartService.add(beer)
   }
 }
 
