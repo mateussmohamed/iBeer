@@ -39,13 +39,18 @@ class CartController {
   }
 
   onCheckout() {
+    if (this.items.length === 0) {
+      this.toggleCart = false;
+      $rmc('overflow-hidden', this.$body);
+      return;
+    }
     const order = this.cart.checkout();
     this.order.save(order)
       .then((res) => {
         this.clearCart();
         this.toggleCart = false;
         $rmc('overflow-hidden', this.$body);
-        this.router.go('order', { id: res.key});
+        this.router.go('order', { id: res.key });
       })
 
   }

@@ -22,8 +22,8 @@
         </ul>
       </div>
       <footer>
-        <a class="checkout btn" href="#0" ng-click="$ctrl.onCheckout();">
-          <em ng-if="$ctrl.items.length > 0">Checkout - <span>{{ $ctrl.total | currency }}</span></em>
+        <a class="checkout btn" ng-click="$ctrl.onCheckout();">
+          <em ng-if="$ctrl.items.length > 0">Finish Order - <span>{{ $ctrl.total | currency }}</span></em>
           <em ng-if="$ctrl.items.length === 0">Go to catalog</span></em>
         </a>
       </footer>

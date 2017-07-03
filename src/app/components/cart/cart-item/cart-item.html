@@ -1,15 +1,13 @@
 <div class="product-image">
-  <a href="#0">
     <img src="{{$ctrl.item.image_url}}" alt="placeholder">
-  </a>
 </div>
 <div class="product-details">
   <h3>
-    <a href="#0">{{$ctrl.item.name}}</a>
+    {{$ctrl.item.name}}
   </h3>
   <span class="price">{{($ctrl.item.abv * $ctrl.item.quantity) | currency }}</span>
   <div class="actions">
-    <a href="#0" class="delete-item" ng-click="$ctrl.removeItem();">Remove</a>
+    <a class="delete-item" ng-click="$ctrl.removeItem();">Remove</a>
     <div class="quantity">
       <label>Qty</label>
       <span class="select">
