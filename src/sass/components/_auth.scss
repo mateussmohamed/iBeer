@@ -1,4 +1,4 @@
-.cd-user-modal-container {
+.user-modal-container {
     position: relative;
     width: 90%;
     max-width: 600px;
@@ -9,7 +9,7 @@
     @include transform(translateY(-30px));
     @include transition-property (transform);
     @include transition-duration(.3s);
-    .cd-switcher {
+    .switcher {
         @include clearfix;
         li {
             @include column(.5);
@@ -36,14 +36,14 @@
     }
     @include MQ(S) {
         margin: 4em auto;
-        .cd-switcher a {
+        .switcher a {
             height: 70px;
             line-height: 70px;
         }
     }
 }
 
-.cd-form {
+.form {
     padding: 1.4em;
     .fieldset {
         position: relative;
@@ -73,14 +73,14 @@
             background-repeat: no-repeat;
             background-position: 50% 0;
         }
-        &.cd-username {
-            background-image: url('/img/cd-icon-username.svg');
+        &.username {
+            background-image: url('/img/icon-username.svg');
         }
-        &.cd-email {
-            background-image: url('/img/cd-icon-email.svg');
+        &.email {
+            background-image: url('/img/icon-email.svg');
         }
-        &.cd-password {
-            background-image: url('/img/cd-icon-password.svg');
+        &.password {
+            background-image: url('/img/icon-password.svg');
         }
     }
     input {
@@ -127,7 +127,7 @@
         @include font-size(14px);
         color: $color-1;
     }
-    .cd-error-message {
+    .error-message {
         display: inline-block;
         position: absolute;
         left: -5px;
@@ -182,7 +182,7 @@
     }
 }
 
-.cd-form-message {
+.form-message {
     padding: .075em;
     line-height: 1;
     @include font-size(14px);
@@ -195,7 +195,7 @@
     }
 }
 
-.cd-form-bottom-message {
+.form-bottom-message {
     width: 100%;
     padding: 2em;
     text-align: center;

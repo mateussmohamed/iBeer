@@ -64,7 +64,7 @@ $L: 1100px;
   }
 }
 
-// super light grid - it works with the .cd-container class inside style.scss
+// super light grid - it works with the .container class inside style.scss
 @mixin column($percentage, $float-direction:left) {
   width: 100% * $percentage;
   float: $float-direction;
@@ -85,4 +85,88 @@ $L: 1100px;
 
 @function tint( $color, $percent) {
   @return mix(#fff, $color, $percent);
+}
+
+@keyframes qty-enter {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+@keyframes qty-leave {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-100%);
+  }
+}
+
+@keyframes item-move-up-mobile {
+  0% {
+    padding-top: 70px;
+  }
+  100% {
+    padding-top: 0px;
+  }
+}
+
+@keyframes item-move-up {
+  0% {
+    padding-top: 104px;
+  }
+  100% {
+    padding-top: 0px;
+  }
+}
+
+@keyframes item-move-down-mobile {
+  0% {
+    padding-top: 0px;
+  }
+  100% {
+    padding-top: 70px;
+  }
+}
+
+@keyframes item-move-down {
+  0% {
+    padding-top: 0px;
+  }
+  100% {
+    padding-top: 104px;
+  }
+}
+
+@keyframes item-slide-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+}
+
+@keyframes item-slide-in {
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  0% {
+    transform: translateX(80px);
+    opacity: 0;
+  }
 }

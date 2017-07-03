@@ -39,7 +39,7 @@
   }
   &.is-visible {
     visibility: visible;
-    @include animation(cd-slide-in .2s);
+    @include animation(slide-in .2s);
   }
 }
 
@@ -59,18 +59,18 @@
   // @include transition(opacity .3s, visibility .3s);
   h2 {
     @include font-size(24px);
-    @include animation(cd-slide-in .4s);
+    @include animation(slide-in .4s);
   }
   p {
     line-height: 1.6;
     margin: 1em 0;
     color: lighten($color-1, 20%);
-    @include animation(cd-slide-in .6s);
+    @include animation(slide-in .6s);
   }
-  .cd-item-action li {
+  .item-action li {
     display: inline-block;
     margin-right: 1em;
-    @include animation(cd-slide-in .8s);
+    @include animation(slide-in .8s);
     &:first-child {
       margin-left: -4px;
     }
@@ -93,18 +93,18 @@
   //   visibility: visible;
   //   opacity: 1;
   //   h2 {
-  //     @include animation(cd-slide-in .3s);
+  //     @include animation(slide-in .3s);
   //   }
   //   p {
-  //     @include animation(cd-slide-in .4s);
+  //     @include animation(slide-in .4s);
   //   }
-  //   .cd-item-action {
-  //     @include animation(cd-slide-in .5s);
+  //   .item-action {
+  //     @include animation(slide-in .5s);
   //   }
   // }
 }
 
-@include keyframes(cd-slide-in) {
+@include keyframes(slide-in) {
   0% {
     @include transform(translate3d(-40px, 0, 0));
   }
