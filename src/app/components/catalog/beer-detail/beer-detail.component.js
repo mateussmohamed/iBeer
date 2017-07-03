@@ -2,7 +2,10 @@ import template from './beer-detail.html';
 import controller from './beer-detail.controller';
 
 let beerDetailComponent = {
-  bindings: {},
+  bindings: {
+    beer: '<',
+    // onShowDetail: '&'
+  },
   template,
   controller
 };

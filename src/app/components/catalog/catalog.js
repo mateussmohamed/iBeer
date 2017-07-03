@@ -13,7 +13,7 @@ const catalogModule = angular.module('catalog', [
 .component('catalog', catalogComponent)
 .component('beers', beersComponent)
 .component('beer', beerComponent)
-.component('beer-detail', beerDetailComponent)
+.component('beerDetail', beerDetailComponent)
 
 .name;
 

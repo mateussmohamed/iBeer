@@ -1,6 +1,10 @@
 class BeerDetailController {
   constructor() {
-    this.name = 'beerDetail';
+    this.toggle = false;
+  }
+
+  toggleDetail() {
+    this.toggle = !this.toggle;
   }
 }
 

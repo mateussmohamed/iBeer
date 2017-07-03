@@ -1,13 +1,19 @@
 class BeerController {
-  constructor() {
+  constructor(){
+    this.toggleDetail = false;
   }
-
   addToCart() {
     this.onAddToCart({
       $event: {
         beer: this.beer
       }
-    })
+    });
+  }
+
+  onToggleDetail($event) {
+    console.log($event);
+    // this.toggleDetail = !this.toggleDetail;
+    // this.onToggleDetail();
   }
 }
 

@@ -1,3 +1,18 @@
-<div>
-  <h1>{{ $ctrl.name }}</h1>
+<button class="detail-beer" ng-click="$ctrl.toggleDetail();">Detail</button>
+<!--<div class="beer-detail-container-overlay"></div>-->
+<div class="beer-detail-modal" ng-class="{'is-visible': $ctrl.toggle === true}">
+  <div class="beer-detail-modal-container" ng-class="{'is-visible animate-width': $ctrl.toggle === true}">
+    <div class="beer-detail-modal-image">
+      <img src="{{$ctrl.beer.image_url}}" alt="">
+    </div>
+    <div class="beer-detail-modal-info" ng-class="{'add-content': $ctrl.toggle === true}">
+      <h2>{{$ctrl.beer.name}}</h2>
+      <p>{{$ctrl.beer.description}}</p>
+      <!--<ul class="cd-item-action">
+        <li><button class="add-to-cart">Add to cart</button></li>
+      </ul>-->
+    </div>
+    <a href="#" ng-click="$ctrl.toggleDetail();" class="beer-detail-modal-close">Close</a>
+  </div>
+</div>
 </div>
