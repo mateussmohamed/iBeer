@@ -24,9 +24,9 @@
   /* quick view non available on small devices */
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 90%;
-  max-width: 600px;
+  max-width: 767px;
   background: #FFF;
   padding: 1rem;
   margin: 3em auto 4em;
@@ -36,6 +36,10 @@
   @include transition(.3s);
   @include MQ(S) {
     margin: 4em auto;
+    flex-direction: column;
+  }
+  @include MQ(M) {
+    flex-direction: row;
   }
   &.is-visible {
     visibility: visible;
@@ -44,64 +48,50 @@
 }
 
 .beer-detail-modal-image {
-  flex-basis: 25%;
+  flex-basis: 100%;
   @include clearfix;
   img {
-    max-height: 300px;
+    max-height: 350px;
+    margin: 0 auto;
+    display: block;
+  }
+  @include MQ(M) {
+    flex-basis: 25%;
+    img {
+      max-height: 350px;
+      margin: 0 auto;
+      display: block;
+    }
   }
 }
 
 .beer-detail-modal-info {
-  // position: absolute;
   flex-basis: 75%;
-  padding: 1rem 0 1rem 1rem; // visibility: hidden;
-  // opacity: 0;
-  // @include transition(opacity .3s, visibility .3s);
+  padding: 1.5rem 0 1rem 1rem;
   h2 {
-    @include font-size(24px);
+    font-weight: bold;
+    @include font-size(28px);
+    @include animation(slide-in .4s);
+  }
+  h4 {
+    @include font-size(18px);
     @include animation(slide-in .4s);
   }
   p {
-    line-height: 1.6;
-    margin: 1em 0;
+    line-height: 1.3em;
+    margin: 0.5em 0;
+    font-size: 0.8em;
     color: lighten($color-1, 20%);
     @include animation(slide-in .6s);
   }
-  .item-action li {
-    display: inline-block;
-    margin-right: 1em;
-    @include animation(slide-in .8s);
-    &:first-child {
-      margin-left: -4px;
-    }
+  .volume {
+    font-weight: 300;
+    font-style: italic;
+    @include font-size(18px);
   }
   .add-to-cart {
-    @include appearance(none);
-    @include border-radius;
-    border: none;
-    padding: .6em 1.2em;
-    background-color: $color-2;
-    color: $color-4;
-    @include font-smoothing;
-    font-family: $primary-font;
-    @include font-size(16px);
-    cursor: pointer;
+    float: left;
   }
-  // .add-content & {
-  //   /* class added at the end of the width animation, used to show the content */
-  //   position: relative;
-  //   visibility: visible;
-  //   opacity: 1;
-  //   h2 {
-  //     @include animation(slide-in .3s);
-  //   }
-  //   p {
-  //     @include animation(slide-in .4s);
-  //   }
-  //   .item-action {
-  //     @include animation(slide-in .5s);
-  //   }
-  // }
 }
 
 @include keyframes(slide-in) {
@@ -120,18 +110,13 @@
   display: inline-block;
   width: 30px;
   height: 30px;
-
-  /* image replacement */
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
-  // visibility: hidden;
-  // @include transform(scale(0));
   @include transition(opacity .3s, visibility .3s);
-
   &::before,
   &::after {
-    content:'';
+    content: '';
     /* close icon in css */
     position: absolute;
     top: 12px;
@@ -152,11 +137,4 @@
   &:hover {
     @include transform(scale(1.2));
   }
-  // .add-content & {
-  //   visibility: visible;
-  //   @include transform(scale(1));
-  //   -webkit-transition: -webkit-transform .3s 0s, visibility 0s 0s;
-  //   -moz-transition: -moz-transform .3s 0s, visibility 0s 0s;
-  //   transition: transform .3s 0s, visibility 0s 0s;
-  // }
 }

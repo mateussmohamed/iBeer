@@ -2,8 +2,8 @@
   <div class="thumb">
     <img src="{{$ctrl.beer.image_url}}" alt="{{$ctrl.name}}" />
   </div>
-  <div class="customization">
-    <beer-detail beer="$ctrl.beer" on-show-detail="$ctrl.toggleDetail($event)"></beer-detail>
+  <div class="beer-actions">
+    <beer-detail beer="$ctrl.beer" on-show-detail="$ctrl.toggleDetail($event)" on-add-cart="$ctrl.addToCart($ctrl.beer);"></beer-detail>
     <button class="add-to-cart" ng-click="$ctrl.addToCart($ctrl.beer);">Add to Cart</button>
   </div>
 </div>
@@ -12,4 +12,3 @@
   <span></span>
   <em>${{ $ctrl.beer.abv }}</em>
 </div>
-

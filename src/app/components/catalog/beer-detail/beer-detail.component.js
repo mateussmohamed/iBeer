@@ -3,8 +3,7 @@ import controller from './beer-detail.controller';
 
 let beerDetailComponent = {
   bindings: {
-    beer: '<',
-    // onShowDetail: '&'
+    beer: '<'
   },
   template,
   controller

@@ -12,34 +12,13 @@ Single Item
   border-radius: 4px;
   padding: 1em 2em;
   .thumb {
-    // display: block;
-    // background-color: $color-4;
-    // box-shadow: 0 2px 10px rgba(#000, .08);
-    // border-radius: 4px;
-    // padding: 4em;
     img {
       width: auto;
       max-height: 250px;
       margin: 0 auto;
       display: block;
     }
-  } // &:hover {
-  // 	background: red;
-  // }
-  // &:hover,
-  // &.hover {
-  // 	.customization {
-  // 		/* product customization visible */
-  // 		// pointer-events: auto;
-  // 		// visibility: visible;
-  // 		// opacity: 1;
-  // 		// @include transition(opacity .2s 0s, visiblity 0s 0s);
-  // 	}
-  // 	.customization-trigger {
-  // 		/* this is the settings icon - visible on touch devices only */
-  // 		// display: none;
-  // 	}
-  // }
+  }
 }
 
 
@@ -49,15 +28,9 @@ Product Customization
 
 -------------------------------- */
 
-.customization {
-  // position: absolute;
-  // z-index: 2;
-  // left: 0;
-  // bottom: 0;
+.beer-actions {
   width: 100%;
-  padding: 1em 0; // visibility: hidden;
-  // opacity: 0;
-  // pointer-events: none;
+  padding: 1em 0;
   @include clearfix;
   @include transition(opacity .2s 0s, visibility 0s .2s);
   .add-to-cart,
@@ -75,8 +48,9 @@ Product Customization
   }
   .add-to-cart,
   .detail-beer {
-    width: calc(50% - 23px);
-    padding: 1em 0.5em;
+    // min-width: calc(50% - 23px);
+    width: auto;
+    padding: 1em;
   }
   .add-to-cart,
   .detail-beer {
@@ -87,37 +61,11 @@ Product Customization
   .add-to-cart,
   .detail-beer {
     color: $color-4;
-    background-color: $color-5;
+    background-color: $color-2;
     @include font-smoothing;
     &:hover {
-      background-color: lighten($color-5, 5%);
+      background-color: lighten($color-2, 5%);
     }
-  }
-}
-
-
-/* --------------------------------
-
-Settings icon - touch devices only
-
--------------------------------- */
-
-.customization-trigger {
-  position: absolute;
-  z-index: 2;
-  right: 0px;
-  bottom: 0px;
-  height: 40px;
-  width: 40px;
-  /* replace text with an icon */
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-  color: transparent;
-  background: url(/img/icon-settings.svg) no-repeat center center;
-  display: none;
-  .touch & {
-    display: block;
   }
 }
 

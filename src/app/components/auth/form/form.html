@@ -3,14 +3,16 @@
     <label class="image-replace email" for="signin-email">E-mail</label>
     <input class="full-width has-padding has-border" type="email" name="email" placeholder="E-mail" required="required" placeholder="Enter your email"
       ng-model="$ctrl.user.email">
-    <span class="error-message">Error message here!</span>
+    <span class="error-message" ng-if="(authForm.$submitted || authForm.email.$touched) && authForm.email.$error.required">Tell us your email.</span>
+    <span class="error-message" ng-if="(authForm.$submitted || authForm.email.$touched) &&authForm.email.$error.email">This is not a valid email.</span>
   </p>
 
   <p class="fieldset">
     <label class="image-replace password" for="signin-password">Password</label>
     <input class="full-width has-padding has-border" type="password" name="password" required="required" placeholder="Enter your password"
       ng-model="$ctrl.user.password" placeholder="Password">
-    <span class="error-message">Error message here!</span>
+      <span class="error-message" ng-if="(authForm.$submitted || authForm.password.$touched) && authForm.password.$error.required">Tell us your password.</span>
+    </div>
   </p>
 
   <p class="fieldset">

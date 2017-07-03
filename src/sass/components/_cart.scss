@@ -1,6 +1,5 @@
 .cart-container {
   &::before {
-    /* dark bg layer visible when the cart is open */
     content: '';
     position: fixed;
     z-index: 1;
@@ -27,13 +26,11 @@
   bottom: 20px;
   right: 3%;
   transition: transform .2s;
-  /* Force Hardware Acceleration in WebKit */
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   will-change: transform;
   backface-visibility: hidden;
   .empty & {
-    /* hide cart */
     transform: translateY(150px);
   }
   @include MQ(L) {
@@ -42,7 +39,6 @@
 }
 
 .cart-trigger {
-  /* button that triggers the cart content */
   z-index: 3;
   height: 72px;
   width: 72px;
@@ -50,6 +46,7 @@
   text-indent: 100%;
   color: transparent;
   white-space: nowrap;
+  cursor: pointer;
   &::after,
   &::before {
     /* used to create the cart/'X' icon */
@@ -81,10 +78,10 @@
     right: -10px;
     height: 28px;
     width: 28px;
-    background: $color-5;
+    background: $color-2;
     color: $color-4;
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 300;
     border-radius: 50%;
     text-indent: 0;
     transition: transform .2s .5s;
@@ -173,7 +170,7 @@
     background: $color-2;
     color: rgba($color-4, 0);
     text-align: center;
-    font-size: 1.65rem;
+    font-size: 1.25rem;
     font-weight: 600;
     transition: all .2s 0s;
     &:hover {
@@ -212,7 +209,7 @@
     }
     ul {
       overflow: hidden;
-      padding: 0 1.4em;
+      padding: 0 0.7em;
       position: relative;
       padding-bottom: 90px;
     }
@@ -224,28 +221,12 @@
       transition: opacity 0s .2s, transform 0s .2s;
       &:not(:last-of-type) {
         margin-bottom: 20px;
-      } // &.deleted {
-      //   /* this class is added to an item when it is removed form the cart */
-      //   position: absolute;
-      //   left: 1.4em;
-      //   width: calc(100% - 2.8em);
-      //   opacity: 0;
-      //   animation: item-slide-out .3s forwards;
-      //   &.undo-deleted {
-      //     /* used to reinsert an item deleted from the cart when user clicks 'Undo' */
-      //     animation: item-slide-in .3s forwards;
-      //   }
-      // }
-      // &.deleted+li {
-      //   animation: item-move-up-mobile .3s;
-      //   animation-fill-mode: forwards;
-      // }
+      }
     }
   }
   .product-image {
     display: inline-block;
     float: left;
-    /* the image height determines the height of the list item - in this case height = width */
     width: 50px;
     img {
       display: block;
@@ -312,16 +293,15 @@
   .quantity {
     float: right;
     color: tint($color-1, 40%);
+    line-height: 22px;
     & label {
       display: inline-block;
-      margin-right: .3em;
     }
   }
   .select {
     position: relative;
   }
   .select::after {
-    /* switcher arrow for select element */
     content: '';
     position: absolute;
     z-index: 1;
@@ -336,14 +316,14 @@
   }
   select {
     position: relative;
-    padding: 0 1em 0 0;
     cursor: pointer;
     appearance: none;
     background: transparent;
     border: none;
     border-radius: 0;
-    font-size: 1rem;
+    font-size: 1.04rem;
     margin: 0;
+    width: 40px;
     color: tint($color-1, 40%);
     &:focus {
       outline: none;
@@ -372,7 +352,6 @@
       width: 90px;
     }
     .product-details {
-      // padding: 1.4em 0 0 1em;
       width: calc( 100% - 90px);
     }
     h3,

@@ -9,12 +9,6 @@ class BeerController {
       }
     });
   }
-
-  onToggleDetail($event) {
-    console.log($event);
-    // this.toggleDetail = !this.toggleDetail;
-    // this.onToggleDetail();
-  }
 }
 
 export default BeerController;
