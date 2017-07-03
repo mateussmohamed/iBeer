@@ -173,6 +173,7 @@
     font-size: 1.25rem;
     font-weight: 600;
     transition: all .2s 0s;
+    cursor: pointer;
     &:hover {
       background: lighten($color-2, 3%);
     }
