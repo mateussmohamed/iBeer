@@ -13,8 +13,8 @@
       <tr ng-repeat="order in $ctrl.orders">
         <td>{{order.$id | uppercase }}</td>
         <td>{{order.items.length}}</td>
-        <td>{{order.totalPrice}}</td>
-        <td>{{order.requestDate | date }}</td>
+        <td>{{order.totalPrice | currency}}</td>
+        <td>{{order.requestDate | date:'medium' }}</td>
         <td>
           <button ng-click="$ctrl.goToDetailOrder(order)">View Order</button>
         </td>
