@@ -47,7 +47,7 @@ header {
 #cd-hamburger-menu {
     left: 0;
     a {
-        background: darken($header-bg, 5%) url('/app/img/cd-hamburger-menu.svg') no-repeat center center;
+        background: darken($header-bg, 5%) url('/img/cd-hamburger-menu.svg') no-repeat center center;
     }
     @include MQ(L) {
         display: none;
@@ -57,7 +57,7 @@ header {
 // #cd-cart-trigger {
 //     right: 0;
 //     a {
-//         background: darken($header-bg, 5%) url('/app/img/cd-cart.svg') no-repeat center center;
+//         background: darken($header-bg, 5%) url('/img/cd-cart.svg') no-repeat center center;
 //     }
 //     @include MQ(L) {
 //         /* cart right margin on desktop */

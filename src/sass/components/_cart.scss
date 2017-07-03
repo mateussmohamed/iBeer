@@ -55,7 +55,7 @@
     @include center;
     height: 100%;
     width: 100%;
-    background: url(/app/img/cd-icons-cart-close.svg) no-repeat 0 0;
+    background: url(/img/cd-icons-cart-close.svg) no-repeat 0 0;
     transition: opacity .2s, transform .2s;
   }
   &::after {
@@ -189,7 +189,7 @@
       content: '';
       height: 24px;
       width: 24px;
-      background: url(/app/img/cd-icon-arrow-next.svg) no-repeat center center;
+      background: url(/img/cd-icon-arrow-next.svg) no-repeat center center;
       opacity: 0;
       transition: opacity .2s;
     }
@@ -281,7 +281,7 @@
   }
   .price {
     float: right;
-    width: 30%;
+    width: 20%;
     text-align: right;
     font-size: 1rem;
     height: 1.4em;
@@ -292,24 +292,28 @@
     height: 1.4em;
     line-height: 1.4em;
     float: left;
+    width: 80%;
     @include clearfix;
   }
   .delete-item,
   .quantity {
-    float: left;
     color: tint($color-1, 40%);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
   .delete-item {
-    margin-right: 1em;
+    float: left;
+    // margin-right: 1em;
     &:hover {
       color: $color-5;
     }
   }
-  .quantity label {
-    display: inline-block;
-    margin-right: .3em;
+  .quantity {
+    float: right;
+    & label {
+      display: inline-block;
+      margin-right: .3em;
+    }
   }
   .select {
     position: relative;
@@ -325,7 +329,7 @@
     display: block;
     width: 12px;
     height: 12px;
-    background: $color-4 url(/app/img/cd-icon-select.svg) no-repeat center center;
+    background: $color-4 url(/img/cd-icon-select.svg) no-repeat center center;
     pointer-events: none;
   }
   select {
