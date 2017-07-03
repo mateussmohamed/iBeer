@@ -1,9 +1,10 @@
 <button class="detail-beer" ng-click="$ctrl.toggleDetail();">View Detail</button>
 
-<div class="beer-detail-modal" ng-class="{'is-visible': $ctrl.toggle === true}">
-  <div class="beer-detail-modal-container" ng-class="{'is-visible animate-width': $ctrl.toggle === true}">
+<div class="beer-detail-modal" id="beer-detail-{{$ctrl.beer.id}}" ng-class="{'is-visible': $ctrl.toggle === true}">
+  <div class='beer-detail-exit' ng-click="$ctrl.toggleDetail();"></div>
+  <div class="beer-detail-modal-container" id="beer-detail-container-{{$ctrl.beer.id}}" ng-class="{'is-visible animate-width': $ctrl.toggle === true}">
     <div class="beer-detail-modal-image">
-      <img src="{{$ctrl.beer.image_url}}" alt="">
+      <img src="{{$ctrl.beer.image_url}}" alt="{{$ctrl.beer.name}}">
     </div>
     <div class="beer-detail-modal-info" ng-class="{'add-content': $ctrl.toggle === true}">
       <h2>{{$ctrl.beer.name}}</h2>

@@ -1,3 +1,5 @@
+import { $qs, $on, $rmc } from '../../../utils/helpers';
+
 class BeerDetailController {
   constructor() {
     this.toggle = false;
