@@ -1,5 +1,20 @@
-<span class="cd-qty">{{$ctrl.item.quantity}}x</span> {{$ctrl.item.name}}
-<div class="cd-price">{{($ctrl.item.abv * $ctrl.item.quantity) | currency }}</div>
-<a href="#0" class="cd-item-remove cd-img-replace" ng-click="$ctrl.removeItem($ctrl.item);">
-  Remove
-</a>
+<div class="product-image">
+  <a href="#0">
+    <img src="{{$ctrl.item.image_url}}" alt="placeholder">
+  </a>
+</div>
+<div class="product-details">
+  <h3>
+    <a href="#0">{{$ctrl.item.name}}</a>
+  </h3>
+  <span class="price">{{($ctrl.item.abv * $ctrl.item.quantity) | currency }}</span>
+  <div class="actions">
+    <a href="#0" class="delete-item" ng-click="$ctrl.removeItem();">Remove</a>
+    <div class="quantity">
+      <label>Qty</label>
+      <span class="select">
+        <select ng-options="item as item for item in $ctrl.qtys"ng-model="$ctrl.quantity" ng-change="$ctrl.updateQty($event);"></select>
+      </span>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,8 @@ import controller from './cart-item.controller';
 let cartItemComponent = {
   bindings: {
     item: '<',
-    onRemoveItem: '&'
+    onRemoveItem: '&',
+    onUpdateQtyItem: '&',
   },
   template,
   controller
