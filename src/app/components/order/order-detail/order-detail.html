@@ -3,30 +3,37 @@
     <div class="actions">
       <button ng-click="$ctrl.goToOrders()">View my Orders</button>
     </div>
-    <table cellpadding="0" cellspacing="0">
+    <table>
       <tr class="top">
         <td>
           <span>Order #: {{$ctrl.order.$id | uppercase}}</span><br>
           <span>Date: {{$ctrl.order.requestDate | date:'medium' }}</span>
         </td>
       </tr>
-      <tr class="heading">
-        <td>Item</td>
-        <td colspan="2">Totals</td>
-      </tr>
-      <tr ng-repeat="item in $ctrl.order.items" class="item">
-        <td>{{item.name}}</td>
-        <td>
-          <span>{{item.price | currency}} x {{item.quantity}} => </span>
-          <span>{{(item.price * item.quantity) | currency}}</span>
-        </td>
-      </tr>
-      <tr class="total">
-        <td></td>
-        <td>
-          Total: {{$ctrl.order.totalPrice | currency}}
-        </td>
-      </tr>
+    </table>
+    </tr>
+    <table class="table responsive-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th colspan="2">Totals</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in $ctrl.order.items" class="item">
+          <td data-th="Item">{{item.name}}</td>
+          <td data-th="Subtotal">
+            <span>{{item.price | currency}} x {{item.quantity}} => </span>
+            <span>{{(item.price * item.quantity) | currency}}</span>
+          </td>
+        </tr>
+        <tr class="total">
+          <td></td>
+          <td>
+            Total: {{$ctrl.order.totalPrice | currency}}
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>

@@ -11,123 +11,120 @@ header {
   @include MQ(L) {
     height: 80px;
   }
-}
-
-#logo {
-  padding-top: 5px;
-  /* delete this property if you don't want your logo to scale down on mobile devices */
-  & img {
-    max-height: 40px;
-  }
-  @include transform(scale(.8));
-  @include MQ(L) {
-    padding-top: 20px;
-    position: absolute;
-    /* logo left margin on Dekstop */
-    left: 2.4em;
-    top: 0;
-    @include transform(scale(1));
-  }
-}
-
-#hamburger-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 6;
-  height: 100%;
-  a {
-    width: 60px;
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
-    background: darken($header-bg, 5%) url('/img/hamburger-menu.svg') no-repeat center center;
-  }
-  &.is-open {
-    a {
-      background: darken($header-bg, 5%) url('/img/icon-close.svg') no-repeat center center;
+    & img {
+      max-height: 40px;
+    }
+    @include transform(scale(.8));
+    @include MQ(L) {
+      padding-top: 20px;
+      position: absolute;
+      /* logo left margin on Dekstop */
+      left: 2.4em;
+      top: 0;
+      @include transform(scale(1));
     }
   }
-  @include MQ(L) {
-    display: none;
-  }
-}
-
-#main-nav {
-  position: fixed;
-  top: 0;
-  height: 100%;
-  width: 260px;
-  /* header height */
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  box-shadow: 0 0 20px rgba(#000, .2);
-  z-index: $sidebar-zindex;
-  @include MQ(M) {
-    width: 350px;
-  }
-  @include MQ(L) {
-    width: 30%;
-    /* header height has changed */
-    padding-top: 80px;
-  }
-}
-
-#main-nav {
-  left: -100%;
-  @include transition(left .3s);
-  &.is-open {
+  .hamburger-menu {
+    position: absolute;
+    top: 0;
     left: 0;
-    border-top: 50px solid #31353d;
+    z-index: 6;
+    height: 100%;
+    a {
+      width: 60px;
+      height: 100%;
+      background: darken($header-bg, 5%) url('/img/hamburger-menu.svg') no-repeat center center;
+      &:hover {
+        cursor: pointer;
+      }
+      &.is-open {
+        background: darken($header-bg, 5%) url('/img/icon-close.svg') no-repeat center center;
+      }
+      @include MQ(L) {
+        display: none;
+      }
+    }
+  }
+  .main-nav {
+    position: fixed;
+    top: 50px;
+    height: 100%;
+    width: 260px;
+    /* header height */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 0 20px rgba(#000, .2);
+    z-index: $sidebar-zindex;
+    @include MQ(M) {
+      width: 350px;
+    }
+    @include MQ(L) {
+      width: 30%;
+      /* header height has changed */
+      padding-top: 80px;
+    }
+  }
+  .main-nav {
+    left: -100%;
+    @include transition(left .5s);
+    &.is-open {
+      left: 0; // border-top: 50px solid #31353d;
+      @include transition(left .5s);
+    }
     ul {
       background: #fff;
       height: 100%;
-    }
-  }
-  ul {
-    a {
-      display: block;
-      height: 50px;
-      line-height: 50px;
-      padding: 0 1em;
-      border-bottom: 1px solid $border;
-    }
-    .current {
-      box-shadow: inset 3px 0 $link;
-    }
-  }
-  @include MQ(L) {
-    /* reset main nav style */
-    position: absolute;
-    height: auto;
-    width: auto;
-    left: auto;
-    right: 2em;
-    padding-top: 0;
-    top: 0;
-    background: transparent;
-    box-shadow: none;
-    /* header height */
-    line-height: 80px;
-    z-index: $header-zindex;
-    li {
-      display: inline-block;
-      margin-left: 1em;
-    }
-    ul a {
-      display: inline-block;
-      height: auto;
-      line-height: 1;
-      padding: 1em 1.4em;
-      border-bottom: none;
-      color: rgba(#FFF, .8);
-      @include border-radius;
-      &.current {
-        box-shadow: none;
-        background: $link;
-        color: #FFF;
+      a {
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 1em;
+        border-bottom: 1px solid $border;
       }
-      &:hover {
-        background: $link;
-        color: #FFF;
+      .current {
+        box-shadow: inset 3px 0 $link;
+      }
+    }
+    @include MQ(L) {
+      /* reset main nav style */
+      position: absolute;
+      height: auto;
+      width: auto;
+      left: auto;
+      right: 2em;
+      padding-top: 0;
+      top: 0;
+      background: transparent;
+      box-shadow: none;
+      /* header height */
+      line-height: 80px;
+      z-index: $header-zindex;
+      li {
+        display: inline-block;
+        margin-left: 1em;
+      }
+      ul a {
+        display: inline-block;
+        height: auto;
+        line-height: 1;
+        padding: 1em 1.4em;
+        border-bottom: none;
+        color: rgba(#FFF, .8);
+        @include border-radius;
+        &.current {
+          box-shadow: none;
+          background: $link;
+          color: #FFF;
+        }
+        &:hover {
+          background: $link;
+          color: #FFF;
+        }
       }
     }
   }
