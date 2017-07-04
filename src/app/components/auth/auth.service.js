@@ -1,12 +1,14 @@
 import firebase from 'firebase';
 class AuthService {
-  constructor($firebaseAuth) {
+  constructor($firebaseAuth, cfpLoadingBar) {
     'ngInject';
+    this.loading = cfpLoadingBar;
     this.auth = $firebaseAuth(firebase.auth());
     this.authData = null;
   }
 
   login(user) {
+    this.loading.start();
     return this.auth
       .$signInWithEmailAndPassword(user.email, user.password)
       .then(this.storeAuthData);
@@ -19,6 +21,7 @@ class AuthService {
   }
 
   logout() {
+    this.loading.start();
     return this.auth
       .$signOut()
       .then(this.clearAuthData);
@@ -35,10 +38,12 @@ class AuthService {
 
   clearAuthData = () => {
     this.authData = null;
+    this.loading.complete();
   }
 
   storeAuthData = (response) => {
     this.authData = response;
+    this.loading.complete();
     return this.authData;
   }
 

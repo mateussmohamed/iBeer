@@ -77,7 +77,7 @@ header {
       @include transition(left .5s);
     }
     ul {
-      background: #fff;
+      background: $color-4;
       height: 100%;
       a {
         display: block;
@@ -104,6 +104,9 @@ header {
       /* header height */
       line-height: 80px;
       z-index: $header-zindex;
+      ul{
+        background: transparent;
+      }
       li {
         display: inline-block;
         margin-left: 1em;
