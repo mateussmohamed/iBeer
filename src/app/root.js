@@ -2,6 +2,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import firebase from 'firebase';
 import angularfire from 'angularfire';
+import angularLoadingBar from 'angular-loading-bar';
 import commom from './common/common.module';
 import components from './components/components.module';
 import rootComponent from './root.component';
@@ -22,11 +23,12 @@ firebase.initializeApp(config);
 angular.module('root', [
   uiRouter,
   angularfire,
+  angularLoadingBar,
   commom,
   components
 ])
   .component('root', rootComponent)
-  .config(($locationProvider, $firebaseRefProvider) => {
+  .config(($locationProvider, $firebaseRefProvider, cfpLoadingBarProvider) => {
     'ngInject';
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
     // #how-to-configure-your-server-to-work-with-html5mode
@@ -37,5 +39,4 @@ angular.module('root', [
         default: config.databaseURL,
         orders: `${config.databaseURL}/orders`
       });
-
   });

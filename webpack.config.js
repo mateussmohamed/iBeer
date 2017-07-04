@@ -11,7 +11,7 @@ module.exports = {
       { test: /\.html$/, loader: 'raw' },
       { test: /\.(scss|sass)$/, loader: 'style!css!sass' },
       { test: /\.css$/, loader: 'style!css' },
-      { test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/, use: 'url-loader?limit=100000' }
+      { test: /\.(png|jpg|gif|svg|webp|eot|ttf|woff|woff2)$/, use: 'url-loader?limit=100000' }
     ]
   },
   plugins: [
